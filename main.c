@@ -3,11 +3,8 @@
 #include "linkedlist.h"
 
 void printLinkedList(LinkedList *linkedlist) {
-  Node *node = linkedlist->head;
-
-  while (node != NULL) {
+  for (Node *node = linkedlist->head; node; node = node->next) {
     printf("%d -> ", node->data);
-    node = node->next;
   }
   printf("NULL\n");
 }

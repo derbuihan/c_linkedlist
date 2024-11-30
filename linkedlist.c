@@ -22,7 +22,7 @@ LinkedList *newLinkedList() {
 
 void freeLinkedList(LinkedList *linkedlist) {
   Node *node = linkedlist->head;
-  while (node != NULL) {
+  while (node) {
     Node *next = node->next;
     freeNode(node);
     node = next;
@@ -34,13 +34,13 @@ void freeLinkedList(LinkedList *linkedlist) {
 void appendLinkedList(LinkedList *linkedlist, int data) {
   Node *node = newNode(data);
 
-  if (linkedlist->head == NULL) {
+  if (!linkedlist->head) {
     linkedlist->head = node;
     return;
   }
 
   Node *last = linkedlist->head;
-  while (last->next != NULL) {
+  while (last->next) {
     last = last->next;
   }
   last->next = node;
@@ -56,12 +56,12 @@ static Node *copyNode(Node *node) {
 
 void extendLinkedList(LinkedList *linkedlist, LinkedList *other) {
   Node *end = linkedlist->head;
-  while (end->next != NULL) {
+  while (end->next) {
     end = end->next;
   }
 
   Node *curr = other->head;
-  while (curr != NULL) {
+  while (curr) {
     end = end->next = copyNode(curr);
     curr = curr->next;
   }
@@ -97,7 +97,7 @@ void removeLinkedList(LinkedList *linkedlist, int data) {
     return;
   }
 
-  while (curr->next != NULL) {
+  while (curr->next) {
     Node *temp = curr->next;
     if (temp->data == data) {
       curr->next = temp->next;
@@ -135,7 +135,7 @@ void popLinkedList(LinkedList *linkedlist, int index) {
 
 void clearLinkedList(LinkedList *linkedlist) {
   Node *curr = linkedlist->head;
-  while (curr != NULL) {
+  while (curr) {
     Node *temp = curr;
     curr = curr->next;
     freeNode(temp);
@@ -160,7 +160,7 @@ int countLinkedList(LinkedList *linkedlist, int data) {
   Node *curr = linkedlist->head;
   int count = 0;
 
-  while (curr != NULL) {
+  while (curr) {
     if (curr->data == data) {
       count++;
     }
@@ -173,10 +173,10 @@ int countLinkedList(LinkedList *linkedlist, int data) {
 void sortLinkedList(LinkedList *linkedlist) {
   Node *curr = linkedlist->head;
 
-  while (curr != NULL) {
+  while (curr) {
     Node *node = curr->next;
 
-    while (node != NULL) {
+    while (node) {
       if (curr->data > node->data) {
         int temp = curr->data;
         curr->data = node->data;
@@ -193,7 +193,7 @@ void reverseLinkedList(LinkedList *linkedlist) {
   Node *curr = linkedlist->head;
   Node *next = NULL;
 
-  while (curr != NULL) {
+  while (curr) {
     next = curr->next;
     curr->next = prev;
     prev = curr;
@@ -208,7 +208,7 @@ LinkedList *copyLinkedList(LinkedList *linkedlist) {
 
   Node head = {};
   Node *end = &head;
-  while (curr != NULL) {
+  while (curr) {
     end = end->next = copyNode(curr);
     curr = curr->next;
   }
