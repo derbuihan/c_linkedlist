@@ -13,9 +13,16 @@ static Node *newNode(int data) {
 
 static void freeNode(Node *node) { free(node); }
 
-LinkedList *newLinkedList() {
+LinkedList *newLinkedList(int arr[], int size) {
+  Node head = {};
+  Node *cur = &head;
+
+  for (int i = 0; i < size; i++) {
+    cur = cur->next = newNode(arr[i]);
+  }
+
   LinkedList *linkedlist = malloc(sizeof(LinkedList));
-  linkedlist->head = NULL;
+  linkedlist->head = head.next;
 
   return linkedlist;
 }
@@ -212,7 +219,7 @@ LinkedList *copyLinkedList(LinkedList *linkedlist) {
     end = end->next = copyNode(curr);
     curr = curr->next;
   }
-  LinkedList *new_linkedlist = newLinkedList();
+  LinkedList *new_linkedlist = newLinkedList((int *){}, 0);
   new_linkedlist->head = head.next;
 
   return new_linkedlist;

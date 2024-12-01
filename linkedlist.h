@@ -14,7 +14,7 @@ struct LinkedList {
   Node *head;
 };
 
-LinkedList *newLinkedList();
+LinkedList *newLinkedList(int arr[], int size);
 
 void freeLinkedList(LinkedList *linkedlist);
 

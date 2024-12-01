@@ -12,7 +12,7 @@ void printLinkedList(LinkedList *linkedlist) {
 int main(void) {
   printf("Hello, World!\n");
 
-  LinkedList *list = newLinkedList();
+  LinkedList *list = newLinkedList((int *){}, 0);
 
   // append
   appendLinkedList(list, 11);
@@ -24,9 +24,8 @@ int main(void) {
   printLinkedList(list);
 
   // extend
-  LinkedList *other = newLinkedList();
-  appendLinkedList(other, 44);
-  appendLinkedList(other, 55);
+  int other_arr[2] = {44, 55};
+  LinkedList *other = newLinkedList(other_arr, 2);
   extendLinkedList(list, other);
   printLinkedList(list);
 
